@@ -1,13 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faTableCells,
+  faSearch,
+  faMicrophone,
+} from "@fortawesome/free-solid-svg-icons";
+import { StateProvider } from "./StateProvider";
+import reducer, { initialState } from "./reducer"
+// import * as serviceWorker from './serviceWorker'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+library.add(faTableCells, faSearch, faMicrophone);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <StateProvider initialState={initialState} reducer={reducer}>
+      <App />
+    </StateProvider>
   </React.StrictMode>
 );
 
